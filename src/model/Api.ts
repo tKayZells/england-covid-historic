@@ -21,9 +21,28 @@ enum AreaType {
     ltla = "ltla"
 }
 
-enum MetricCases {
-    newCasesByPublishDate = "newCasesByPublishDate",
-    cumCasesByPublishDate = "cumCasesByPublishDate"
+enum StructureMetric {
+    date = "date",
+    areaName = "areaName",
+    areaCode = "areaCode",
+    alertLevel = "alertLevel",
+    newCasesByPublishDate = "newCasesByPublishDate"
 }
 
-export { AreaCode, AreaName, AreaType, MetricCases }
+type Structure = {
+    [k : string] : StructureMetric
+}
+
+interface Filters {
+    areaType?: AreaType
+    areaName?: AreaName
+    areaCode?: AreaCode
+}
+
+interface CasesByPublishDate {
+    date: Date,
+    cases: number
+}
+
+export {AreaCode, AreaName, AreaType, StructureMetric };
+export type { CasesByPublishDate, Filters, Structure };
